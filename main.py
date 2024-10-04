@@ -4,7 +4,6 @@ from pydub import AudioSegment
 from pydub.playback import play
 import speech_recognition as sr
 
-# Configure suas chaves de API
 openai.api_key = 'SUA_CHAVE_DE_API_OPENAI'
 ELEVENLABS_API_KEY = 'SUA_CHAVE_DE_API_ELEVENLABS'
 VOICE_ID = 'SEU_VOICE_ID_DO_ELEVENLABS'
