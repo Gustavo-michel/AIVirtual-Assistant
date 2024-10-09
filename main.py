@@ -74,16 +74,15 @@ def main():
         elif escolha == 'f':
             mensagem = reconhecer_fala()
             if mensagem is None:
-                continue
+                print("Não há retorno")
         else:
             print("Opção inválida.")
             continue
-
         if mensagem.lower() in ['sair', 'exit', 'quit']:
             break
 
         resposta_texto, historico = request_chatgpt(mensagem, historico)
-        print("Assistente:", resposta_texto)
+        print(f"Assistente: {resposta_texto}")
         sintetizar_audio(resposta_texto)
         reproduzir_audio("resposta.mp3")
 
