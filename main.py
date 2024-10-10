@@ -3,10 +3,11 @@ import requests
 from pydub import AudioSegment
 from pydub.playback import play
 import speech_recognition as sr
+from decouple import config
 
-openai.api_key = 'CHAVE_DE_API_OPENAI'
-ELEVENLABS_API_KEY = 'CHAVE_DE_API_ELEVENLABS'
-VOICE_ID = 'VOICE_ID_DO_ELEVENLABS'
+openai.api_key = config('CHAVE_DE_API_OPENAI')
+ELEVENLABS_API_KEY = config('CHAVE_DE_API_ELEVENLABS')
+VOICE_ID = config('VOICE_ID_DO_ELEVENLABS')
 
 def request_chatgpt(mensagem, historico=[]):
     historico.append({"role": "user", "content": mensagem})
