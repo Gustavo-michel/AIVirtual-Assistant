@@ -17,10 +17,6 @@ def carregar_instrucoes(arquivo):
         return f.read()
 
 def request_chatgpt(mensagem, historico=[]):
-    instrucoes = carregar_instrucoes("instrucoes.txt")
-    historico = [
-        {"role": "system", "content": instrucoes},
-    ]
     historico.append({"role": "user", "content": mensagem})
     resposta = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
@@ -73,6 +69,10 @@ def reconhecer_fala():
         return None
     
 def main():
+    instrucoes = carregar_instrucoes("instrucoes.txt")
+    historico = [
+        {"role": "system", "content": instrucoes},
+    ]
     while True:
         escolha = input("Você quer digitar ou falar? (d/f): ").lower()
         if escolha == 'd':
@@ -89,8 +89,9 @@ def main():
 
         resposta_texto, historico = request_chatgpt(mensagem, historico)
         print(f"Assistente: {resposta_texto}")
-        sintetizar_audio(resposta_texto)
-        reproduzir_audio("resposta.mp3")
+        if escolha == 'f':
+            sintetizar_audio(resposta_texto)
+            reproduzir_audio("resposta.mp3")
 
 if __name__ == "__main__":
     main()
