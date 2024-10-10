@@ -9,7 +9,15 @@ openai.api_key = config('CHAVE_DE_API_OPENAI')
 ELEVENLABS_API_KEY = config('CHAVE_DE_API_ELEVENLABS')
 VOICE_ID = config('VOICE_ID_DO_ELEVENLABS')
 
+def carregar_instrucoes(arquivo):
+    with open(arquivo, 'r', encoding='utf-8') as f:
+        return f.read()
+
 def request_chatgpt(mensagem, historico=[]):
+    instrucoes = carregar_instrucoes("instrucoes.txt")
+    historico = [
+        {"role": "system", "content": instrucoes},
+    ]
     historico.append({"role": "user", "content": mensagem})
     resposta = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
@@ -60,12 +68,8 @@ def reconhecer_fala():
     except sr.RequestError as e:
         print(f"Erro ao solicitar resultados; {e}")
         return None
-
+    
 def main():
-    historico = [
-        {"role": "system", "content": ""},
-        # Adicionar prompts
-    ]
     while True:
         escolha = input("Você quer digitar ou falar? (d/f): ").lower()
         
