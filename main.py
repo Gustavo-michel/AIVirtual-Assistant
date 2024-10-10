@@ -3,11 +3,14 @@ import requests
 from pydub import AudioSegment
 from pydub.playback import play
 import speech_recognition as sr
-from decouple import config
+from dotenv import load_dotenv
 
-openai.api_key = config('CHAVE_DE_API_OPENAI')
-ELEVENLABS_API_KEY = config('CHAVE_DE_API_ELEVENLABS')
-VOICE_ID = config('VOICE_ID_DO_ELEVENLABS')
+load_dotenv()
+import os
+
+openai.api_key = os.environ['CHAVE_DE_API_OPENAI']
+ELEVENLABS_API_KEY = os.environ['CHAVE_DE_API_ELEVENLABS']
+VOICE_ID = os.environ['VOICE_ID_DO_ELEVENLABS']
 
 def carregar_instrucoes(arquivo):
     with open(arquivo, 'r', encoding='utf-8') as f:
@@ -72,7 +75,6 @@ def reconhecer_fala():
 def main():
     while True:
         escolha = input("Você quer digitar ou falar? (d/f): ").lower()
-        
         if escolha == 'd':
             mensagem = input("Você: ")
         elif escolha == 'f':
