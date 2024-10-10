@@ -93,4 +93,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-# pip install openai, requests, pydub, SpeechRecognition
+# pip install openai, requests, pydub, SpeechRecognition, decouple

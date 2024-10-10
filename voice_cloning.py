@@ -5,7 +5,7 @@ api_key = config('CHAVE_DE_API_ELEVENLABS')
 url = "https://api.elevenlabs.io/v1/voices/add"
 
 
-audio_file_path = "audio.mp3"
+audio_file_path = "voz_bergas.mp3"
 
 
 files = {
@@ -13,7 +13,7 @@ files = {
 }
 
 data = {
-    'name': 'Bergas voice'
+    'name': 'BergasVoice'
 }
 
 headers = {
