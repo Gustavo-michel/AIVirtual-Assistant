@@ -1,16 +1,17 @@
 import os
 import openai
-import requests
+# import requests
 from pydub import AudioSegment
 from pydub.playback import play
 import speech_recognition as sr
 from dotenv import load_dotenv
+from gtts import gTTS
 
 load_dotenv()
 
 openai.api_key = os.environ['CHAVE_DE_API_OPENAI']
-ELEVENLABS_API_KEY = os.environ['CHAVE_DE_API_ELEVENLABS']
-VOICE_ID = os.environ['VOICE_ID_DO_ELEVENLABS']
+# ELEVENLABS_API_KEY = os.environ['CHAVE_DE_API_ELEVENLABS']
+# VOICE_ID = os.environ['VOICE_ID_DO_ELEVENLABS']
 
 def carregar_instrucoes(arquivo):
     with open(arquivo, 'r', encoding='utf-8') as f:
@@ -27,25 +28,29 @@ def request_chatgpt(mensagem, historico=[]):
     return resposta_texto, historico
 
 def sintetizar_audio(texto):
-    url = f"https://api.elevenlabs.io/v1/text-to-speech/{VOICE_ID}"
-    headers = {
-        "xi-api-key": ELEVENLABS_API_KEY,
-        "Content-Type": "application/json"
-    }
-    data = {
-        "text": texto,
-        "voice_settings": {
-            "stability": 0.75,
-            "similarity_boost": 0.75
-        }
-    }
-    response = requests.post(url, json=data, headers=headers)
-    if response.status_code == 200:
-        with open("resposta.mp3", "wb") as f:
-            f.write(response.content)
-        print("Áudio salvo como resposta.mp3")
-    else:
-        print("Erro na síntese de voz:", response.text)
+    tts = gTTS(texto, lang='pt-br')
+    tts.save('resposta.mp3')
+    print("Arquivo salvo como resposta.mp3")
+
+    # url = f"https://api.elevenlabs.io/v1/text-to-speech/{VOICE_ID}"
+    # headers = {
+    #     "xi-api-key": ELEVENLABS_API_KEY,
+    #     "Content-Type": "application/json"
+    # }
+    # data = {
+    #     "text": texto,
+    #     "voice_settings": {
+    #         "stability": 0.75,
+    #         "similarity_boost": 0.75
+    #     }
+    # }
+    # response = requests.post(url, json=data, headers=headers)
+    # if response.status_code == 200:
+    #     with open("resposta.mp3", "wb") as f:
+    #         f.write(response.content)
+    #     print("Áudio salvo como resposta.mp3")
+    # else:
+    #     print("Erro na síntese de voz:", response.text)
 
 def reproduzir_audio(arquivo):
     audio = AudioSegment.from_file(arquivo, format="mp3")
