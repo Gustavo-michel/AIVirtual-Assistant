@@ -1,3 +1,4 @@
+import os
 import openai
 import requests
 from pydub import AudioSegment
@@ -6,7 +7,6 @@ import speech_recognition as sr
 from dotenv import load_dotenv
 
 load_dotenv()
-import os
 
 openai.api_key = os.environ['CHAVE_DE_API_OPENAI']
 ELEVENLABS_API_KEY = os.environ['CHAVE_DE_API_ELEVENLABS']
@@ -96,4 +96,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-# pip install openai, requests, pydub, SpeechRecognition, decouple
+# pip install openai, requests, pydub, SpeechRecognition, python_dotenv
