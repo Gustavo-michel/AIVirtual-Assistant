@@ -93,7 +93,7 @@ def main():
             break
 
         resposta_texto, historico = request_chatgpt(mensagem, historico)
-        print(f"Assistente: {resposta_texto}")
+        print(f"Iris: {resposta_texto}")
         if escolha == 'f':
             sintetizar_audio(resposta_texto)
             reproduzir_audio("resposta.mp3")
