@@ -79,22 +79,16 @@ def main():
         {"role": "system", "content": instrucoes},
     ]
     while True:
-        # escolha = input("Você quer digitar ou falar? (d/f): ").lower()
-        # if escolha == 'd':
-        #     mensagem = input("Você: ")
-        # elif escolha == 'f':
-        #     mensagem = reconhecer_fala()
-        #     if mensagem is None:
-        #         print("Não há retorno")
-        # else:
-        #     print("Opção inválida.")
-        #     continue
-        # if mensagem.lower() in ['sair', 'exit', 'quit']:
-        #     break
-
-        mensagem = reconhecer_fala()
-        if mensagem is None:
-            print("Não há retorno")
+        escolha = input("Você quer digitar ou falar? (d/f): ").lower()
+        if escolha == 'd':
+            mensagem = input("Você: ")
+        elif escolha == 'f':
+            mensagem = reconhecer_fala()
+            if mensagem is None:
+                print("Não há retorno")
+        else:
+            if mensagem.lower() in ['sair', 'exit', 'quit']:
+                break
 
         resposta_texto, historico = request_chatgpt(mensagem, historico)
         print(f"Iris: {resposta_texto}")
