@@ -1,8 +1,1 @@
-## Abrir o terminal
--> Git clone https://github.com/Gustavo-michel/AiAssist.git
-
--> python -m venv env
-
--> env/Scripts/Activate
-
--> pip install openai, requests, pydub, SpeechRecognition
+Assistente Virtual com a API da OpenAI com TTS em tempo real.
