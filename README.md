@@ -1,4 +1,4 @@
-# Documentação do Projeto - Assistente de IA para Feira de Ciências
+# Assistente de IA para Feira de Ciências
 
 ## Sumário
 1. [Introdução](#introdução)
