@@ -1,4 +1,4 @@
-# Assistente de IA para Feira de Ciências
+# Assistente de IA GPT
 
 ## Sumário
 1. [Introdução](#introdução)
