@@ -9,7 +9,7 @@
 ---
 
 ## Introdução
-Este projeto é um **assistente de IA**, batizado de **Iris**, desenvolvido para uma feira de ciências do ensino médio. Ele utiliza a **API do ChatGPT** (modelo GPT-3.5-turbo) para interagir com o usuário através de mensagens de texto ou comandos de voz. O sistema responde em texto ou em áudio, permitindo uma experiência interativa rica. A clonagem de voz é uma funcionalidade futura, com suporte à API da **ElevenLabs** para fornecer uma experiência mais personalizada e realista de síntese de voz.
+Este projeto é um **assistente de IA**, batizado de **Iris**, desenvolvido para uma feira de ciências do ensino médio. Ele utiliza a **API do ChatGPT** (modelo GPT-3.5-turbo) para interagir com o usuário através de mensagens de texto ou comandos de voz. O sistema responde em texto ou em áudio, permitindo uma experiência interativa rica. A clonagem de voz é uma funcionalidade futura, com suporte à API da **ElevenLabs** para fornecer uma experiência mais personalizada e realista de síntese de voz, ou uma voz padrão (em Português e gratuita) com o gTTS.
 
 ---
 
@@ -37,3 +37,12 @@ Aqui estão as principais tecnologias e bibliotecas usadas no projeto:
 1. **Python** instalado na versão 3.1X ou superior.
 2. **API Key do OpenAI**: Necessário para acessar a API do GPT.
 3. **API Key do ElevenLabs** (opcional): Para clonagem de voz e síntese avançada de áudio (não obrigatório para o funcionamento básico).
+
+### Inicialize um ambiente virtual (opcional)
+```
+  python -m venv env
+```
+### Baixe as bibliotecas executando o pip do requirements.txt
+```bash
+  pip install -r requirements.txt 
+```
