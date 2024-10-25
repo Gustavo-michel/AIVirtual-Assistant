@@ -20,7 +20,7 @@ def carregar_instrucoes(arquivo):
 def request_chatgpt(mensagem, historico=[]):
     historico.append({"role": "user", "content": mensagem})
     resposta = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
+        model="gpt-o1",
         messages=historico
     )
     resposta_texto = resposta['choices'][0]['message']['content']
@@ -74,9 +74,9 @@ def reconhecer_fala():
         return None
     
 def main():
-    instrucoes = carregar_instrucoes("instrucoes.txt")
+    # instrucoes = carregar_instrucoes("instrucoes.txt")
     historico = [
-        {"role": "system", "content": instrucoes},
+        {"role": "system", "content": " "},
     ]
     while True:
         escolha = input("Você quer digitar ou falar? (d/f): ").lower()
